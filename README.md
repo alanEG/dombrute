@@ -1,7 +1,8 @@
 
 # dombrute
 
-This is a tool for discovering parameter in used by javascript
+A tool for discovering the JavaScript parameters
+
 ## How it works
 chromium - This component sets the proxy in the Chrome browser to the proxy URL that is hosted.
 
