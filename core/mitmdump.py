@@ -10,6 +10,7 @@ class Mitmdump:
 
     def start_mitmdump(self):
         global mitmdump, stop_event
+        
         scriptLocation = os.path.dirname(os.path.abspath(__file__)) + str(self.fileSl) + "proxy_replace.py"
         mitmdump = subprocess.Popen(["mitmdump","-q","-p", str(self.proxyPort), "-s", scriptLocation, self.wordlistUrl])
         self.stop_event.clear()

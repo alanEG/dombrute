@@ -1,7 +1,8 @@
 
 # dombrute
 
-This is a tool for discovering parameter in used by javascript
+A tool for discovering the JavaScript parameters
+
 ## How it works
 chromium - This component sets the proxy in the Chrome browser to the proxy URL that is hosted.
 
@@ -19,7 +20,7 @@ After the page loads, the tool checks if there is any parameter value in the con
 git clone https://github.com/alanEG/dombrute
 cd dombrute 
 pip install -r requirment.txt
-apt install mitmproxy, chromium-browser
+apt install mitmproxy chromium-browser
 ```
 
 ### windows
@@ -49,7 +50,6 @@ optional arguments:
   -sp, --server-port    Http server port default 8911
   -pp, --proxy-port     Proxy server port default 8912
   -w,  --wordlist       Wordlist file
-  -ss, --show-server    Show servers logs
   -c,  --cookie         Cookie
   -tf, --target-file    URL file
   -s,  --stdin          Read url from stdin
