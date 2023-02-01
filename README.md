@@ -50,7 +50,6 @@ optional arguments:
   -sp, --server-port    Http server port default 8911
   -pp, --proxy-port     Proxy server port default 8912
   -w,  --wordlist       Wordlist file
-  -ss, --show-server    Show servers logs
   -c,  --cookie         Cookie
   -tf, --target-file    URL file
   -s,  --stdin          Read url from stdin
