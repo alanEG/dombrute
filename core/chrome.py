@@ -1,7 +1,9 @@
 from selenium import webdriver
 from selenium.webdriver.firefox.options import Options
 from selenium.webdriver.chrome.options import Options
+from core.init import *
 import re, requests,os
+
 
 PathTool = os.path.dirname(os.path.abspath(__file__))
 
@@ -9,6 +11,7 @@ class Chrome:
 
     def __init__(self,proxyPort,cookie):
         self.proxyPort = proxyPort 
+        self.fileSl = initFileSl()
         self.cookie = []
         if cookie:
             self.cookie=self.parseCookie(cookie)
@@ -24,7 +27,7 @@ class Chrome:
 
     def save(self,url,parameter,wher):
         path = os.path.dirname(os.path.abspath(__file__))
-        with open(path + '/../found.txt','a+') as f:
+        with open(path + self.fileSl + '..' + self.fileSl + 'found.txt','a+') as f:
             f.write(f"Found[{parameter}][{wher}]: {url}\n")
 
     def check(self,url, content):
@@ -50,10 +53,10 @@ class Chrome:
         options.add_argument('ignore-certificate-errors')
         options.add_argument("--proxy-server=https://127.0.0.1:" + str(self.proxyPort))
         options.add_argument("--log-level=3")
-        options.headless = True
+        options.headless = False
      
         # Initialize a web driver
-        driver = webdriver.Chrome(executable_path=PathTool + '/chromedriver',options=options)
+        driver = webdriver.Chrome('chromedriver',options=options)
         driver.set_page_load_timeout(30)
 
         # Navigate to a URL

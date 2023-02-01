@@ -1,8 +1,7 @@
-import argparse, sys, time, platform
+import argparse,sys,platform,time,traceback
 from core.chrome import *
 from core.server import *
 from core.mitmdump import *
-import platform
 
 def checkArgument(args):
     urls=[]
@@ -29,7 +28,6 @@ def main():
     parser.add_argument('-w',  '--wordlist',metavar="Wordlist_location",help='Wordlist file',default=os.path.dirname(os.path.abspath(__file__)) + '/wordlist/parameter.txt')
     parser.add_argument('-c',  '--cookie',metavar="Cookie",help='Cookie')
 
-
     args = parser.parse_args()
 
     try:
@@ -53,7 +51,8 @@ def main():
         server.stop_server()
         mitmdump.stop_mitmdump()
     except Exception as F:
-        print(F)
+        traceback.print_exc()
+        sys.exit(1)
         
 if __name__ == '__main__':
     main()

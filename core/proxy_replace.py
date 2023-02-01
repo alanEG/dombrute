@@ -15,7 +15,7 @@ function main(){
       for (i=0;i < wordlist.length;i++){
         param = wordlist[i];
         if (!parameterOld.get(param)){
-          payload = "1HeWkAJ3<\'"1HeWkAJ3" + param;
+          payload = "1HeWkAJ3" + param;
           if (oldLocation.indexOf("?") < 0 && newURLSearch.indexOf("?") < 0){
             newURLSearch = newURLSearch + "?" + param + "=" + payload + "s";
           } else {
@@ -68,11 +68,11 @@ def response(flow):
     content = flow.response.content  # <-- remove the decode() method
     if b'<head' in content:
         MathHtml = re.findall(b'(<head.*?>)',content)[0]
-        content = content.replace(MathHtml,MathHtml + b'1<script>' + startScript + b'</script>')
+        content = content.replace(MathHtml,MathHtml + b'<script>' + startScript + b'</script>')
         content = content.replace(b'</body>', b'<script>' + endScript + b'</script></body>')
     elif b'<body' in content:
         MathHtml = re.findall(b'(<body.*?>)',content)[0]
-        content = content.replace(MathHtml,MathHtml + b'2<script>' + startScript + b'</script>')
+        content = content.replace(MathHtml,MathHtml + b'<script>' + startScript + b'</script>')
         content = content.replace(b'</body>', b'<script>' + endScript + b'</script></body>')
     else:
        with open('fail_proxy.txt','a+') as f:
