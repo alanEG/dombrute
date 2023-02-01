@@ -15,7 +15,7 @@ function main(){
       for (i=0;i < wordlist.length;i++){
         param = wordlist[i];
         if (!parameterOld.get(param)){
-          payload = "1HeWkAJ3" + param;
+          payload = "1HeWkAJ3<\'"1HeWkAJ3" + param;
           if (oldLocation.indexOf("?") < 0 && newURLSearch.indexOf("?") < 0){
             newURLSearch = newURLSearch + "?" + param + "=" + payload + "s";
           } else {
