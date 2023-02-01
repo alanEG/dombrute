@@ -37,6 +37,9 @@ Download mini_installer.exe from https://www.chromium.org/getting-involved/downl
 Or
 
 `cat urls.txt | python3 dombrute.py -s` 
+<br><br>
+[![asciicast](https://asciinema.org/a/JCAdfMyxYoOzLj5Aloi7Q1BHY.svg)](https://asciinema.org/a/JCAdfMyxYoOzLj5Aloi7Q1BHY)
+
 ## Documentation
 Swhunt has many argument 
 You can run `./swhunt.py -h` to show help 
