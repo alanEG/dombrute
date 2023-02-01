@@ -20,7 +20,7 @@ After the page loads, the tool checks if there is any parameter value in the con
 git clone https://github.com/alanEG/dombrute
 cd dombrute 
 pip install -r requirment.txt
-apt install mitmproxy, chromium-browser
+apt install mitmproxy chromium-browser
 ```
 
 ### windows
