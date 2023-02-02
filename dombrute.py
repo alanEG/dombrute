@@ -1,4 +1,4 @@
-import argparse,sys,platform,time,traceback
+import argparse,sys,time,traceback
 from core.chrome import *
 from core.server import *
 from core.mitmdump import *

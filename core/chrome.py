@@ -90,7 +90,10 @@ class Chrome:
                         if 'text/html' in response.headers['Content-Type']:
                             try:
                                 driver.get(url)
-                                self.addCookie(driver,self.cookie,url);
+                                if self.cookie:
+                                    self.addCookie(driver,self.cookie,url);
+                                    driver.get(url)
+
                                 self.check(url,driver.page_source)
                             except Exception as e:
                                 driver.quit()
