@@ -47,9 +47,9 @@ class Chrome:
 
     def lanuchChrome(self):
         options = webdriver.ChromeOptions()
-        options.add_argument("--proxy-server=http://127.0.0.1:" + str(self.proxyPort))
-        options.add_argument("--proxy-server=https://127.0.0.1:" + str(self.proxyPort))
-        options.add_argument('ignore-certificate-errors')
+        options.add_argument("--proxy-server=http://localhost:" + str(self.proxyPort) + "," + "https://localhost:" + str(self.proxyPort))
+        options.add_argument('--ignore-certificate-errors')
+        options.add_argument('--ignore-ssl-errors=yes')
         options.add_argument('--no-sandbox')
         options.add_argument("--headless")
         options.add_argument("--log-level=3")
