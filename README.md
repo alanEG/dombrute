@@ -1,64 +1,37 @@
-
 # dombrute
 
-A tool for discovering the JavaScript parameters
+A tool for discovering the JavaScript parameters on a website 
 
-## How it works
-chromium - This component sets the proxy in the Chrome browser to the proxy URL that is hosted.
+## What it does
 
-http-server - This component is responsible for serving the wordlist to the tool.
+dombrute works by setting up a proxy in the Chrome browser and serving a wordlist to the tool via an HTTP server. The proxy server then receives the response from the target URL and adds some JavaScript before returning the response to the browser. The JavaScript will then send a request to the HTTP server to retrieve the wordlist, parse it, and add it to the URL. Finally, the tool checks if there is any parameter value in the content. If there is, it will save the URL and the parameter in a `found.txt` file.
 
-proxy-server - This component receives the response from the target URL and adds some JavaScript before returning the response to 
-the browser.
+## How to install
 
-The JavaScript will then send a request to the http-server to retrieve the wordlist then parse it then push to url.
-After the page loads, the tool checks if there is any parameter value in the content. If there is, the tool will save the URL and the parameter in a found.txt file.
-# Installation
+### On Linux
 
-### linux
-```
-git clone https://github.com/alanEG/dombrute
-cd dombrute 
-pip install -r requirment.txt
-apt install mitmproxy chromium-browser
-```
+1.  Clone the repository: `git clone https://github.com/alanEG/dombrute`
+2.  Change into the directory: `cd dombrute`
+3.  Install the requirements: `pip install -r requirment.txt`
+4.  Install `mitmproxy` and `chromium-browser`: `apt install mitmproxy chromium-browser`
 
-### windows
-```
-git clone https://github.com/alanEG/dombrute
-cd dombrute 
-pip3 install -r requirment.txt
-Download mitmproxy from https://mitmproxy.org/ and install
-Download mini_installer.exe from https://www.chromium.org/getting-involved/download-chromium/ and install
-```
-## Using
-`python3 dombrute.py -f urls_file`
+### On Windows
 
-Or
+1.  Clone the repository: `git clone https://github.com/alanEG/dombrute`
+2.  Change into the directory: `cd dombrute`
+3.  Install the requirements: `pip3 install -r requirment.txt`
+4.  Download and install `mitmproxy` from [https://mitmproxy.org/](https://mitmproxy.org/)
+5.  Download and install the Chrome browser from [https://www.chromium.org/getting-involved/download-chromium/](https://www.chromium.org/getting-involved/download-chromium/)
 
-`cat urls.txt | python3 dombrute.py -s` 
-<br><br>
-[![asciicast](https://asciinema.org/a/JCAdfMyxYoOzLj5Aloi7Q1BHY.svg)](https://asciinema.org/a/JCAdfMyxYoOzLj5Aloi7Q1BHY)
+## How to use
 
-## Documentation
-Swhunt has many argument 
-You can run `./swhunt.py -h` to show help 
-```
-usage: dombrute.py [-h] [-sp SERVERPORT] [-pp PROXYPORT] [-w WORDLIST] [-ss] [-c COOKIE] [-tf TARGETFILE] [-s]
+1.  Run the tool: `python3 dombrute.py -f urls_file`
+2.  Alternatively, you can pipe in a list of URLs: `cat urls.txt | python3 dombrute.py -s`
 
-A script discover dom parameter
+## Command line arguments
 
-optional arguments:
-  -h,  --help           Show this help message and exit
-  -sp, --server-port    Http server port default 8911
-  -pp, --proxy-port     Proxy server port default 8912
-  -w,  --wordlist       Wordlist file
-  -c,  --cookie         Cookie
-  -tf, --target-file    URL file
-  -s,  --stdin          Read url from stdin
-```
+dombrute has several command line arguments that you can use to customize your run. You can view the list of arguments by running `./dombrute.py -h` in your terminal.
 
 ## Contributing
 
-Contributions are always welcome!
-
+Contributions are always welcome! If you have an idea or feature request, please feel free to open an issue or submit a pull request.
