@@ -28,6 +28,8 @@ dombrute works by setting up a proxy in the Chrome browser and serving a wordlis
 1.  Run the tool: `python3 dombrute.py -f urls_file`
 2.  Alternatively, you can pipe in a list of URLs: `cat urls.txt | python3 dombrute.py -s`
 
+<br><br>
+[![asciicast](https://asciinema.org/a/JCAdfMyxYoOzLj5Aloi7Q1BHY.svg)](https://asciinema.org/a/JCAdfMyxYoOzLj5Aloi7Q1BHY)
 ## Command line arguments
 
 dombrute has several command line arguments that you can use to customize your run. You can view the list of arguments by running `./dombrute.py -h` in your terminal.
