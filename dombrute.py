@@ -14,7 +14,7 @@ def checkArgument(args):
         for line in sys.stdin:
             urls.append(line.rstrip())
     else:
-        print('You should specify one of the following arguments --urls-file --stdin')
+        print('You should specify one of the following arguments --target-file --stdin')
         sys.exit(1)
     return urls 
 

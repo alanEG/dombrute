@@ -1,38 +1,54 @@
 # dombrute
 
-A tool for discovering the JavaScript parameters on a website 
+A tool designed to help identify JavaScript parameters, which can be useful in detecting DOM XSS vulnerabilities. If a parameter is being handled by JavaScript and its value is being printed in the code, this tool will be able to detect it.
 
 ## What it does
 
 dombrute works by setting up a proxy in the Chrome browser and serving a wordlist to the tool via an HTTP server. The proxy server then receives the response from the target URL and adds some JavaScript before returning the response to the browser. The JavaScript will then send a request to the HTTP server to retrieve the wordlist, parse it, and add it to the URL. Finally, the tool checks if there is any parameter value in the content. If there is, it will save the URL and the parameter in a `found.txt` file.
 
-## How to install
+## Installation
+To install the requirments, run the appropriate installation file based on your platform:
 
-### On Linux
+For Windows, execute `install.bat`
 
-1.  Clone the repository: `git clone https://github.com/alanEG/dombrute`
-2.  Change into the directory: `cd dombrute`
-3.  Install the requirements: `pip install -r requirment.txt`
-4.  Install `mitmproxy` and `chromium-browser`: `apt install mitmproxy chromium-browser`
+For Linux, execute `install.sh`
 
-### On Windows
-
-1.  Clone the repository: `git clone https://github.com/alanEG/dombrute`
-2.  Change into the directory: `cd dombrute`
-3.  Install the requirements: `pip3 install -r requirment.txt`
-4.  Download and install `mitmproxy` from [https://mitmproxy.org/](https://mitmproxy.org/)
-5.  Download and install the Chrome browser from [https://www.chromium.org/getting-involved/download-chromium/](https://www.chromium.org/getting-involved/download-chromium/)
+You also need to install python-requirements: 
+`pip install -r requirements.txt`
 
 ## How to use
 
-1.  Run the tool: `python3 dombrute.py -f urls_file`
-2.  Alternatively, you can pipe in a list of URLs: `cat urls.txt | python3 dombrute.py -s`
+- Run the tool: `python3 dombrute.py -tf urls_file`
 
-<br><br>
+- Alternatively, you can pipe in a list of URLs: `cat urls.txt | python3 dombrute.py -s`
+
 [![asciicast](https://asciinema.org/a/JCAdfMyxYoOzLj5Aloi7Q1BHY.svg)](https://asciinema.org/a/JCAdfMyxYoOzLj5Aloi7Q1BHY)
+
+<br>
+
 ## Command line arguments
 
-dombrute has several command line arguments that you can use to customize your run. You can view the list of arguments by running `./dombrute.py -h` in your terminal.
+```
+usage: dombrute.py [-h] [-v] [-s] [-tf Target-file] [-sp Port] [-pp Port] [-w Wordlist_location] [-c Cookie]
+
+A script discover dom parameter
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -v, --version         show program's version number and exit
+  -s, --stdin           Read url from stdin
+  -tf Target-file, --target-file Target-file
+                        URL file
+  -sp Port, --server-port Port
+                        Http server port default 8911
+  -pp Port, --proxy-port Port
+                        Proxy server port default 8912
+  -w Wordlist_location, --wordlist Wordlist_location
+                        Wordlist file
+  -c Cookie, --cookie Cookie
+                        Cookie
+```
+
 
 ## Contributing
 
