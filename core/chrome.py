@@ -2,19 +2,29 @@ from selenium import webdriver
 from selenium.webdriver.firefox.options import Options
 from selenium.webdriver.chrome.options import Options
 from core.init import *
-import re, requests,os
+import re, requests,os, platform, sys
 
 
 PathTool = os.path.dirname(os.path.abspath(__file__))
 
 class Chrome:
-
     def __init__(self,proxyPort,cookie):
         self.proxyPort = proxyPort 
         self.fileSl = initFileSl()
         self.cookie = []
+        self.chromedriver_location = self.get_chromedriver_location()
         if cookie:
             self.cookie=self.parseCookie(cookie)
+
+    def get_chromedriver_location(self):
+        os_platform = platform.platform().lower()
+        if "linux" in os_platform: 
+            return PathTool + '/../' + 'chromedriver'
+        elif "windows" in os_platform:
+            return PathTool + '\\..\\' + 'chromedriver'
+        else:
+            print(f"Unknown platform {os_platform}")
+            sys.exit(1)
 
     def parseCookie(self,cookie):
         cookie = cookie.split(';')
@@ -26,8 +36,7 @@ class Chrome:
         return FinalCookie
 
     def save(self,url,parameter,wher):
-        path = os.path.dirname(os.path.abspath(__file__))
-        with open(path + self.fileSl + '..' + self.fileSl + 'found.txt','a+') as f:
+        with open(PathTool + self.fileSl + '..' + self.fileSl + 'found.txt','a+') as f:
             f.write(f"Found[{parameter}][{wher}]: {url}\n")
 
     def check(self,url, content):
@@ -54,9 +63,9 @@ class Chrome:
         options.add_argument("--headless")
         options.add_argument("--log-level=3")
         options.headless = True
-     
+        
         # Initialize a web driver
-        driver = webdriver.Chrome('chromedriver',options=options)
+        driver = webdriver.Chrome(self.chromedriver_location,options=options)
         driver.set_page_load_timeout(30)
 
         # Navigate to a URL
