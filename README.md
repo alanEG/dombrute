@@ -49,6 +49,9 @@ optional arguments:
                         Cookie
 ```
 
+## Reference 
+Wordlist: https://github.com/s0md3v/Arjun/db
+
 ## TODO 
 - support multithreading
 
