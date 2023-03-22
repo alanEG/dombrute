@@ -50,7 +50,7 @@ optional arguments:
 ```
 
 ## Reference 
-Wordlist: https://github.com/s0md3v/Arjun/db
+Wordlist: https://github.com/s0md3v/Arjun
 
 ## TODO 
 - support multithreading
