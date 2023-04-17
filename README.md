@@ -9,7 +9,7 @@ dombrute works by setting up a proxy in the Chrome browser and serving a wordlis
 ## Installation
 To install the requirments, run the appropriate installation file based on your platform:
 
-For Windows, execute `install.bat`
+For Windows, execute `install.ps1`
 
 For Linux, execute `install.sh`
 

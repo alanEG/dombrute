@@ -12,7 +12,7 @@ def checkArgument(args):
 
     elif args.stdin:
         for line in sys.stdin:
-            urls.append(line.rstrip())
+            urls.append(line.strip("\ufeff").rstrip())
     else:
         print('You should specify one of the following arguments --target-file --stdin')
         sys.exit(1)

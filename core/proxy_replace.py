@@ -66,15 +66,19 @@ if (!parameterOld.get('Done')){
 
 def response(flow):
     content = flow.response.content  # <-- remove the decode() method
+    start_script = b'<script>' + startScript + b'</script>'
+    end_script = b'<script>' + endScript + b'</script></body>'
     if b'<head' in content:
         MathHtml = re.findall(b'(<head.*?>)',content)[0]
-        content = content.replace(MathHtml,MathHtml + b'<script>' + startScript + b'</script>')
-        content = content.replace(b'</body>', b'<script>' + endScript + b'</script></body>')
+        content = content.replace(MathHtml,MathHtml + start_script)
+        content = content.replace(b'</body>', end_script)
     elif b'<body' in content:
         MathHtml = re.findall(b'(<body.*?>)',content)[0]
-        content = content.replace(MathHtml,MathHtml + b'<script>' + startScript + b'</script>')
-        content = content.replace(b'</body>', b'<script>' + endScript + b'</script></body>')
-    else:
+        content = content.replace(MathHtml,MathHtml + start_script)
+        content = content.replace(b'</body>', end_script)
+    elif 'Content-Type' in flow.response.headers and 'text/html' in flow.response.headers['Content-Type']:
+        content =  start_script + content + end_script
+    else: 
        with open('fail_proxy.txt','a+') as f:
             f.write("[Not_html]: " + flow.request.url + '\n')
 
