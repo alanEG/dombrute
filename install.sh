@@ -7,7 +7,7 @@ fi
 
 # Download Chrome installer
 echo "Downloading Chrome installer..."
-wget "https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-stable/google-chrome-stable_103.0.5060.134-1_amd64.deb" \
+wget "https://mirror.cs.uchicago.edu/google-chrome/pool/main/g/google-chrome-stable/google-chrome-stable_103.0.5060.134-1_amd64.deb" \
     -O /tmp/google-chrome-stable_current_amd64.deb
 
 # Install Chrome
