@@ -8,11 +8,17 @@ import re, requests,os, platform, sys
 PathTool = os.path.dirname(os.path.abspath(__file__))
 
 class Chrome:
-    def __init__(self,proxyPort,cookie):
+    def __init__(self,proxyPort,cookie,output_file):
         self.proxyPort = proxyPort 
         self.fileSl = initFileSl()
         self.cookie = []
         self.chromedriver_location = self.get_chromedriver_location()
+
+        if not output_file:
+            output_file = 'found.txt'
+
+        self.output_file = output_file
+
         if cookie:
             self.cookie=self.parseCookie(cookie)
 
@@ -35,13 +41,21 @@ class Chrome:
 
         return FinalCookie
 
-    def save(self,url,parameter,wher):
-        with open(PathTool + self.fileSl + '..' + self.fileSl + 'found.txt','a+') as f:
-            f.write(f"Found[{parameter}][{wher}]: {url}\n")
-
+    def save(self,url,parameter="",wher="",message="",type="found"):
+        with open(PathTool + self.fileSl + '..' + self.fileSl + self.output_file,'a+') as f:
+            if (type == "found"):
+                f.write(f"Found[{parameter}][{wher}]: {url}\n")
+            elif (type == "skip"):
+                f.write(f"Skip[{message}]: {url}")
+            
     def check(self,url, content):
         search = re.findall('(1HeWkAJ3[a-zA-Z0-9_-]+)',content)
         if search:
+            if len(search) > 1000:
+                print(f"[Skip][all parameters are reflected]: {url}")
+                self.save(url,message="All parameters are reflected",type="skp")
+                return 
+
             for value in search:
                 found = re.findall('1HeWkAJ3([a-zA-Z0-9_-]+)',value)
                 for fd in found:

@@ -27,13 +27,14 @@ def main():
     parser.add_argument('-pp', '--proxy-port',metavar="Port",dest='proxyPort',help='Proxy server port default 8912',default='8934')
     parser.add_argument('-w',  '--wordlist',metavar="Wordlist_location",help='Wordlist file',default=os.path.dirname(os.path.abspath(__file__)) + '/wordlist/parameter.txt')
     parser.add_argument('-c',  '--cookie',metavar="Cookie",help='Cookie')
+    parser.add_argument('-o', '--output',metavar="Output",help="Output result")
 
     args = parser.parse_args()
 
     try:
         urls=checkArgument(args)
 
-        chrome = Chrome(int(args.proxyPort),args.cookie)
+        chrome = Chrome(int(args.proxyPort),args.cookie,args.output)
         mitmdump = Mitmdump(int(args.proxyPort),'http://127.0.0.1:' + args.serverPort + '/words')
         server = Server(int(args.serverPort),args.wordlist)
         
