@@ -47,6 +47,8 @@ optional arguments:
                         Wordlist file
   -c Cookie, --cookie Cookie
                         Cookie
+  -o Output, --output Output
+                        Output result
 ```
 
 ## Reference 
