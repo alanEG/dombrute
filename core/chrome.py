@@ -15,7 +15,7 @@ class Chrome:
         self.chromedriver_location = self.get_chromedriver_location()
 
         if not output_file:
-            output_file = 'found.txt'
+            output_file = os.getcwd() + 'found.txt'
 
         self.output_file = output_file
 
@@ -42,7 +42,7 @@ class Chrome:
         return FinalCookie
 
     def save(self,url,parameter="",wher="",message="",type="found"):
-        with open(PathTool + self.fileSl + '..' + self.fileSl + self.output_file,'a+') as f:
+        with open(self.output_file,'a+') as f:
             if (type == "found"):
                 f.write(f"Found[{parameter}][{wher}]: {url}\n")
             elif (type == "skip"):
