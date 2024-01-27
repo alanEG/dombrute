@@ -46,7 +46,7 @@ class Chrome:
             if (type == "found"):
                 f.write(f"Found[{parameter}][{wher}]: {url}\n")
             elif (type == "skip"):
-                f.write(f"Skip[{message}]: {url}")
+                f.write(f"Skip[{message}]: {url}\n")
             
     def check(self,url, content):
         search = re.findall('(1HeWkAJ3[a-zA-Z0-9_-]+)',content)
