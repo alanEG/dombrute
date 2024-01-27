@@ -53,7 +53,7 @@ class Chrome:
         if search:
             if len(search) > 1000:
                 print(f"[Skip][all parameters are reflected]: {url}")
-                self.save(url,message="All parameters are reflected",type="skp")
+                self.save(url,message="All parameters are reflected",type="skip")
                 return 
 
             for value in search:
